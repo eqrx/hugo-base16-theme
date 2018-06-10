@@ -3,11 +3,11 @@
 
   {{ partial "hero.html" . }}
 
-  <h1 class="headline">Recent Posts</h1>
+  <h1 class="headline">About me</h1>
 
   {{ $paginator := .Paginate (where .Site.RegularPages "Section" "post") (or .Site.Params.paginate 3) }}
   <div class="article-list">
-    {{ range $paginator.Pages }}
+    {{ range first 3 (where .Data.Pages "Section" "landing") }}
       {{ partial "article-list-item.html" . }}
     {{ end }}
   </div>
